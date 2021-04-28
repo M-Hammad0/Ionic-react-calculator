@@ -3,8 +3,7 @@ import { IonButton } from '@ionic/react';
 interface ButtonI {
     value : string
     color? : string
-    click?: (e: any) => any
-    label? : string
+    click?: (e: any) => void
 }
 
 const Button: React.FC<ButtonI> = (props) => {

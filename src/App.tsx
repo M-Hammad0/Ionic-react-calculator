@@ -42,8 +42,8 @@ const App: React.FC = () => {
     
   }
 
-  const handleClick = (e: any) => {
-    const value = e.target.id;
+  const handleClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.id ;
         switch(value) {
             case 'AC':
                 setState({ data: ''});
@@ -62,7 +62,7 @@ const App: React.FC = () => {
   }
 
   return(
-    <div style={{backgroundColor: "red"}}>
+    <div>
       <IonApp style={{height:"500px",margin: "auto"}}>
       <IonContent>
         <IonGrid>
@@ -77,7 +77,7 @@ const App: React.FC = () => {
             <IonCol size="3"><Button click={handleClick} color={"op"} value={"⌫"} /></IonCol>
           </IonRow>
           <IonRow>
-            <IonCol><Button click={handleClick} value={"7"} label={"7"} /></IonCol>
+            <IonCol><Button click={handleClick} value={"7"} /></IonCol>
             <IonCol><Button click={handleClick} value={"8"} /></IonCol>
             <IonCol><Button click={handleClick} value={"9"} /></IonCol>
             <IonCol><Button click={handleClick} color={"op"} value={"×"} /></IonCol>
@@ -97,7 +97,7 @@ const App: React.FC = () => {
           <IonRow>
             <IonCol><Button click={handleClick} value={"0"} /></IonCol>
             <IonCol size="3"><Button click={handleClick} value={"."} /></IonCol>
-            <IonCol size="3"><Button click={handleClick} color={"op"} value={"="} label={"="} /></IonCol>
+            <IonCol size="3"><Button click={handleClick} color={"op"} value={"="} /></IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>
