@@ -26,13 +26,20 @@ import {evaluate} from 'mathjs'
 
 
 
+
 const App: React.FC = () => {
 
   const [state,setState] = useState({data: ''})
 
   const calculate = () => {
-    const result = evaluate(state.data)
+    try {
+      const result = evaluate(state.data)
     setState({data: result})
+    } catch (error) {
+      setState({data: 'Syntax Error'})
+      console.log(error)
+    }
+    
   }
 
   const handleClick = (e: any) => {
@@ -42,7 +49,9 @@ const App: React.FC = () => {
                 setState({ data: ''});
                 break;
             case '⌫':
+              if(state.data.length>1){
                 setState({data : state.data.slice(0,state.data.length-1)}) 
+              }
                 break; 
             case '=':
                 calculate();
@@ -53,7 +62,8 @@ const App: React.FC = () => {
   }
 
   return(
-    <IonApp>
+    <div style={{backgroundColor: "red"}}>
+      <IonApp style={{height:"500px",margin: "auto"}}>
       <IonContent>
         <IonGrid>
           <IonRow>
@@ -63,35 +73,36 @@ const App: React.FC = () => {
           </IonRow>
         <IonRow>
             <IonCol><Button click={handleClick} value={"AC"} /></IonCol>
-            <IonCol><Button click={handleClick} color={"tertiary"} value={"⌫"} /></IonCol>
-            <IonCol size="3"><Button click={handleClick} color={"tertiary"} value={"÷"} /></IonCol>
+            <IonCol><Button click={handleClick} color={"op"} value={"÷"} /></IonCol>
+            <IonCol size="3"><Button click={handleClick} color={"op"} value={"⌫"} /></IonCol>
           </IonRow>
           <IonRow>
             <IonCol><Button click={handleClick} value={"7"} label={"7"} /></IonCol>
             <IonCol><Button click={handleClick} value={"8"} /></IonCol>
             <IonCol><Button click={handleClick} value={"9"} /></IonCol>
-            <IonCol><Button click={handleClick} color={"tertiary"} value={"×"} /></IonCol>
+            <IonCol><Button click={handleClick} color={"op"} value={"×"} /></IonCol>
           </IonRow>
           <IonRow>
             <IonCol><Button click={handleClick} value={"4"} /></IonCol>
             <IonCol><Button click={handleClick} value={"5"} /></IonCol>
             <IonCol><Button click={handleClick} value={"6"} /></IonCol>
-            <IonCol><Button click={handleClick} color={"tertiary"} value={"-"} /></IonCol>
+            <IonCol><Button click={handleClick} color={"op"} value={"-"} /></IonCol>
           </IonRow>
           <IonRow>
             <IonCol><Button click={handleClick} value={"1"} /></IonCol>
             <IonCol><Button click={handleClick} value={"2"} /></IonCol>
             <IonCol><Button click={handleClick} value={"3"} /></IonCol>
-            <IonCol><Button click={handleClick} color={"tertiary"} value={"+"} /></IonCol>
+            <IonCol><Button click={handleClick} color={"op"} value={"+"} /></IonCol>
           </IonRow>
           <IonRow>
             <IonCol><Button click={handleClick} value={"0"} /></IonCol>
             <IonCol size="3"><Button click={handleClick} value={"."} /></IonCol>
-            <IonCol size="3"><Button click={handleClick} color={"tertiary"} value={"="} label={"="} /></IonCol>
+            <IonCol size="3"><Button click={handleClick} color={"op"} value={"="} label={"="} /></IonCol>
           </IonRow>
         </IonGrid>
       </IonContent>
     </IonApp>
+    </div>
   );
 }
 

@@ -9,7 +9,7 @@ const Display: React.FC<DisplayI> = ({ data }) => {
     <div>
       <IonItem>
         <div style={{margin: "0 0 0 auto"}}>
-          <IonInput style={{width: "inherit",textAlign: "right"}} placeholder="0" value={data}></IonInput>
+          <IonInput style={{width: "inherit",textAlign: "right"}} placeholder="0" value={data} ></IonInput>
         </div>
       </IonItem>
     </div>

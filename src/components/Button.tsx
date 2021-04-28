@@ -17,7 +17,7 @@ const Button: React.FC<ButtonI> = (props) => {
     }
     return (
         <div>
-            <IonButton id={id} onClick={props.click} color={props.color || "light"} expand="block" >{props.value}</IonButton>
+            <IonButton id={id} onClick={props.click} color={props.color || "light"} expand="full" size="large"  >{props.value}</IonButton>
         </div>
     )
 }
