@@ -1,10 +1,19 @@
+import { IonInput, IonItem } from "@ionic/react";
 
-const Display = () => {
-    return (
-        <div>
-            <h2>hello world</h2>
-        </div>
-    )
+interface DisplayI {
+  data: string;
 }
 
-export default Display
+const Display: React.FC<DisplayI> = ({ data }) => {
+  return (
+    <div>
+      <IonItem>
+        <div style={{margin: "0 0 0 auto"}}>
+          <IonInput style={{width: "inherit",textAlign: "right"}} placeholder="0" value={data}></IonInput>
+        </div>
+      </IonItem>
+    </div>
+  );
+};
+
+export default Display;

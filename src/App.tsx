@@ -33,7 +33,6 @@ const App: React.FC = () => {
   const calculate = () => {
     const result = evaluate(state.data)
     setState({data: result})
-    console.log(state.data.slice(0,state.data.length-1))
   }
 
   const handleClick = (e: any) => {
@@ -42,7 +41,7 @@ const App: React.FC = () => {
             case 'AC':
                 setState({ data: ''});
                 break;
-            case 'Clear':
+            case '⌫':
                 setState({data : state.data.slice(0,state.data.length-1)}) 
                 break; 
             case '=':
@@ -57,11 +56,14 @@ const App: React.FC = () => {
     <IonApp>
       <IonContent>
         <IonGrid>
-          {/* <Display /> */}
-          {state.data}
+          <IonRow>
+            <IonCol>
+            <Display data={state.data}/>
+            </IonCol>
+          </IonRow>
         <IonRow>
             <IonCol><Button click={handleClick} value={"AC"} /></IonCol>
-            <IonCol><Button click={handleClick} color={"tertiary"} value={"Clear"} /></IonCol>
+            <IonCol><Button click={handleClick} color={"tertiary"} value={"⌫"} /></IonCol>
             <IonCol size="3"><Button click={handleClick} color={"tertiary"} value={"÷"} /></IonCol>
           </IonRow>
           <IonRow>
