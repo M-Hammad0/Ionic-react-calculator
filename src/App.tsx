@@ -1,7 +1,5 @@
-import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonRouterOutlet } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
+import { IonApp, IonButton, IonHeader, IonContent, IonGrid, IonRow, IonCol } from '@ionic/react';
+
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,19 +19,42 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import Button from './components/Button';
 
 const App: React.FC = () => (
   <IonApp>
-    <IonReactRouter>
-      <IonRouterOutlet>
-        <Route exact path="/home">
-          <Home />
-        </Route>
-        <Route exact path="/">
-          <Redirect to="/home" />
-        </Route>
-      </IonRouterOutlet>
-    </IonReactRouter>
+    <IonContent>
+      <IonGrid>
+      <IonRow>
+          <IonCol><Button value={"AC"} /></IonCol>
+          <IonCol><Button value={"%"} /></IonCol>
+          <IonCol size="3"><Button value={"÷"} /></IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol><Button value={"7"} /></IonCol>
+          <IonCol><Button value={"8"} /></IonCol>
+          <IonCol><Button value={"9"} /></IonCol>
+          <IonCol><Button value={"×"} /></IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol><Button value={"4"} /></IonCol>
+          <IonCol><Button value={"5"} /></IonCol>
+          <IonCol><Button value={"6"} /></IonCol>
+          <IonCol><Button value={"-"} /></IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol><Button value={"1"} /></IonCol>
+          <IonCol><Button value={"2"} /></IonCol>
+          <IonCol><Button value={"3"} /></IonCol>
+          <IonCol><Button value={"+"} /></IonCol>
+        </IonRow>
+        <IonRow>
+          <IonCol><Button value={"0"} /></IonCol>
+          <IonCol size="3"><Button value={"."} /></IonCol>
+          <IonCol size="3"><Button value={"="} /></IonCol>
+        </IonRow>
+      </IonGrid>
+    </IonContent>
   </IonApp>
 );
 
